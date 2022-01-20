@@ -1,4 +1,17 @@
-# there is no financial discipline that gets by without considering time an important factor
-# major tool to cope with time series data is pandas
-# Wes McKinney original and main author of pandas started developing the library when working as an analyst at AQR
-# pandas has been designed from the ground up to work with financial time series data
+from re import T
+import numpy as np
+import pandas as pd
+import yfinance as yf
+from pylab import mpl, plt
+plt.style.use('seaborn')
+mpl.rcParams['font.family'] = 'serif'
+
+grp_tickers = ['MSFT', 'AAPL', 'FB', 'ADBE']
+
+for t in grp_tickers:
+    ticker = yf.Ticker(t)
+    history = ticker.history(period='5d')
+    data = pd.DataFrame(
+        history['Close'], index=history[0], columns=grp_tickers)
+    data = pd.concat(data, history['Close'], how='left')
+print(data)
