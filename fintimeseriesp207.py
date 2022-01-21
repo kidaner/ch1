@@ -8,5 +8,5 @@ mpl.rcParams['font.family'] = 'serif'
 
 grp_tickers = ['MSFT', 'AAPL', 'FB', 'ADBE']
 data = yf.download(grp_tickers, start='2020-01-01')
-data = data['Close']
-print(data)
+data = data['Close'].round(2)
+print(data.pct_change().round(2))
