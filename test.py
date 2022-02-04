@@ -9,4 +9,8 @@ mpl.rcParams['font.family'] = 'serif'
 grp_tickers = ['MSFT', 'AAPL', 'FB', 'ADBE']
 data = yf.download(grp_tickers, start='2020-01-01')
 data = data['Close']
-print(data)
+
+
+comp = yf.Ticker("MSFT")
+comp = comp.info
+print(comp)
