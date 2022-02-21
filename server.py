@@ -57,6 +57,9 @@ class LoadBalancing:
         # Find out the right server
         # Close the connection on the server
         # Remove the connection from the load balancer
+        for x in self.connections.keys():
+            if x == connection_id:
+                self.connections.pop(connection_id)
 
     def avg_load(self):
         """Calculates the average load of all servers"""
@@ -66,7 +69,7 @@ class LoadBalancing:
         for server in self.servers:
             result += server.load()
             loads += 1
-        return result/loads
+        return result / loads
 
     def ensure_availability(self):
         """If the average load is higher than 50, spin up a new server"""
