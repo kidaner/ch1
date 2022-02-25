@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
-url = 'https://www.sec.gov/Archives/edgar/data/1679788/000162828021006850/coinbaseglobalinc424b.htm'
+url = 'https://investor.coinbase.com/news/news-details/2022/Coinbase-Releases-Fourth-Quarter-and-Full-Year-2021-Shareholder-Letter/default.aspx'
 HEADERS = {'User-Agent': '<Company NAME> <EMAIL ADDRESS>'}
 r = requests.get(url, headers=HEADERS)
 soup = BeautifulSoup(r.text, features="lxml")
