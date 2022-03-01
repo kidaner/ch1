@@ -10,10 +10,10 @@ company = yf.Ticker(ticker)
 trailingEps = company.info["trailingEps"]
 forwardEps = company.info["forwardEps"]
 
-price = company.history(period='1y')
+price = company.history(period='3mo')
 price = price["Close"]
 
-price_earnings = price / trailingEps
+price_earnings = price / ((trailingEps + forwardEps) / 2)
 
 fig, ax1 = plt.subplots()
 ax1.plot(price, linewidth=3)
@@ -27,6 +27,6 @@ ax1.tick_params(axis="both", labelsize=14)
 
 ax2 = ax1.twinx()
 ax2.plot(price_earnings, linewidth=3)
-ax2.set_ylabel("Price/Earnings (x)", fontsize=14)
+ax2.set_ylabel("Price / Earnings (x)", fontsize=14)
 
 plt.show()
