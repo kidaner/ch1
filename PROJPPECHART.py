@@ -13,7 +13,7 @@ forwardEps = company.info["forwardEps"]
 price = company.history(period='3mo')
 price = price["Close"]
 
-price_earnings = price / ((trailingEps + forwardEps) / 2)
+price_earnings = price / 9.39
 
 fig, ax1 = plt.subplots()
 ax1.plot(price, linewidth=3)
