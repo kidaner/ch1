@@ -8,6 +8,6 @@ start = date(2021, 12, 31)
 exxon = data.DataReader("XOM", source, start)
 oil = data.DataReader("CL=F", source, start)
 
-chart = pd.concat([exxon["Close"], oil["Close"]])
+#chart = pd.concat([exxon["Close"], oil["Close"]]).reindex(oil.index)
 
-print(oil)
+print(oil.index.duplicated())
